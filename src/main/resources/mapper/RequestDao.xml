@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.xiezefan.easyim.server.dao.RequestDao">
+	<resultMap type="me.xiezefan.easyim.server.model.RequestFriend"
+		id="RequestFriendResultMap">
+		<id column="id" property="id" />
+		<result column="user_id" property="userid" />
+		<result column="request_user_id" property="requestUserid" />
+		<result column="content" property="content" />
+		<result column="create_time" property="createTime" />
+		<result column="status" property="status" />
+		<association property="friend"
+                     resultMap="me.xiezefan.easyim.server.dao.UserDao.UserResultMap"
+                     columnPrefix="u_"/>
+	</resultMap>
+	
+	<select id="requestFriends" resultMap="RequestFriendResultMap">
+       	SELECT 
+       		r.id as	id,
+       		u.nickname as u_nickname,
+       		r.user_id as user_id,
+       		u.id as u_id,
+       		r.content as content,
+       		r.status as status,
+			r.create_time as create_time
+	   	from
+			tb_user u,tb_request r
+	   	where 
+	        u.id = r.user_id 
+	   	and 
+	   		r.request_user_id= #{user_id} 
+	   	and 
+	   		r.status1 != 'CLEAR'
+		UNION ALL
+		(SELECT 
+       		r.id as	id,
+       		u.nickname as u_nickname,
+       		r.user_id as user_id,
+       		u.id as u_id,
+       		r.content as content,
+       		r.status1 as status,
+					r.create_time as create_time
+	   	from
+				tb_user u,tb_request r
+	   	where 
+	        u.id = r.request_user_id 
+	   	and 
+	   		r.user_id= #{user_id} 
+	   	and 
+	   		r.status != 'CLEAR' )
+	    ORDER BY 
+	    	create_time desc
+    	</select>
+</mapper>

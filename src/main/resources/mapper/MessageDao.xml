@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.xiezefan.easyim.server.dao.MessageDao">
+	<resultMap type="me.xiezefan.easyim.server.model.Message"
+		id="MessageResultMap">
+		<id column="id" property="id" />
+		<result column="from_id" property="fromId" />
+		<result column="type" property="type" />
+		<result column="content" property="content" />
+		<result column="room_id" property="room_id" />
+		<result column="contentStr" property="contentStr" />
+		<result column="create_time" property="createTime"/>
+		<result column="file_path" property="file_path"/>
+		<association property="friend"
+			resultMap="me.xiezefan.easyim.server.dao.UserDao.UserResultMap"
+			columnPrefix="u_" />
+		<association property="list"
+			resultMap="me.xiezefan.easyim.server.dao.MessageDao.MessageListResultMap"
+			columnPrefix="l_" />
+	</resultMap>
+
+	<select id="lastMessage" resultMap="MessageResultMap">
+		SELECT
+			T.id as id,
+			T.type as type,
+			T.content as content,
+			T.create_time as create_time,
+			T.room_id as room_id,
+			T.l_another_name as l_another_name,
+			T.l_unread as l_unread
+		from
+		(SELECT
+			m.id as id,
+			m.type as type,
+			m.content as content,
+			m.create_time as create_time,
+			m.room_id as room_id,
+			l.another_name as l_another_name,
+			l.unread as l_unread
+		from
+			tb_message m 
+			LEFT JOIN tb_message_list l ON m.room_id = l.room_id
+		where
+			l.user_id=#{user_id}
+		and
+			l.status='SHOW'
+		ORDER BY 
+			create_time DESC,
+			m.id DESC
+		) as T 
+		GROUP BY room_id 
+		ORDER BY create_time DESC
+	</select>
+
+</mapper>

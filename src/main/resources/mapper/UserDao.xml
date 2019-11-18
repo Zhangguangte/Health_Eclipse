@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.xiezefan.easyim.server.dao.UserDao">
+	<resultMap type="me.xiezefan.easyim.server.model.User"
+		id="UserResultMap">
+		<id column="id" property="id" />
+		<result column="account" property="account" />
+		<result column="password" property="password" />
+		<result column="nickname" property="nickname" />
+		<result column="device_id" property="deviceId" />
+		<result column="avatar" property="avatar" />
+		<result column="description" property="description" />
+		<result column="location" property="location" />
+		<result column="sex" property="sex" />
+		<result column="create_time" property="createTime" />
+		<result column="last_modify_time" property="lastmodifyTime" />
+		<result column="phone" property="phone" />
+	</resultMap>
+
+	<select id="allFriend" resultMap="UserResultMap">
+        select
+          nickname,
+          initials,
+          account
+        from
+          tb_user u
+        where
+          id in
+          	(SELECT 
+          		user_id2
+         	from
+          		tb_friendship 
+          	where
+          		user_id=#{user_id})
+       	or id in
+         	(SELECT 
+         		user_id
+        	from
+         		tb_friendship 
+         	where
+         		user_id2=#{user_id})
+    </select>
+
+</mapper>

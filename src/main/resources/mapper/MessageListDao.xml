@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.xiezefan.easyim.server.dao.MessageDao">
+	<resultMap type="me.xiezefan.easyim.server.model.MessageList"
+		id="MessageListResultMap">
+		<id column="id" property="id" />
+		<result column="room_id" property="roomId" />
+		<result column="user_id" property="userId" />
+		<result column="status" property="status" />
+		<result column="unread" property="unread" javaType="Integer" />
+		<result column="another_name" property="anotherName" />
+	</resultMap>
+
+
+	<select id="searchRoomId" resultMap="MessageListResultMap">
+		SELECT 
+			l1.room_id as room_id
+		from 
+			tb_message_list l1,tb_message_list l2 
+		where 
+			l1.user_id = #{user_id1}
+		and
+			l2.user_id = #{user_id2} 
+		and 
+			l1.room_id=l2.room_id
+	</select>
+
+</mapper>
