@@ -17,7 +17,8 @@ public class MessageListVo {
 	public String another_name;
 	public String belongId;
 	public String file_path;
-
+	public String sentStatus;
+	
 	public MessageListVo() {
 	}
 
@@ -28,6 +29,7 @@ public class MessageListVo {
 		this.belongId = message.getFromId();
 		this.file_path=message.getFile_path();
 		this.create_time = message.getCreateTime();
+		this.sentStatus = message.getSentStatus();
 		if (null != message.getList()) {
 			this.unread = message.getList().getUnread();
 			this.another_name = message.getList().getAnotherName();
@@ -36,10 +38,23 @@ public class MessageListVo {
 	}
 
 	public MessageListVo(MessageList message) {
-		this.room_id =String.valueOf(message.getRoomId()) ;
+		this.room_id =message.getRoomId() ;
+		this.another_name =message.getAnotherName() ;
+	}
+	
+	public MessageListVo(String roomId) {
+		this.room_id =roomId;
 	}
 	
 	
+	public String getSentStatus() {
+		return sentStatus;
+	}
+
+	public void setSentStatus(String sentStatus) {
+		this.sentStatus = sentStatus;
+	}
+
 	public String getFile_path() {
 		return file_path;
 	}

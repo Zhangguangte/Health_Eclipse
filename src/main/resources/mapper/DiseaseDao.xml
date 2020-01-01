@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.xiezefan.easyim.server.dao.DiseaseDao">
+	<resultMap type="me.xiezefan.easyim.server.model.Disease"
+		id="DiseaseResultMap">
+		<id column="id" property="id" />
+		<result column="disease_name" property="diseaseName" />
+		<result column="disease_symbol" property="symbol" />
+		<result column="disease_alias" property="alias" />
+		<result column="disease_introduce" property="introduce" />
+		<result column="disease_contagious" property="contagious" />
+		<result column="cure_rate" property="cureRate" />
+		<result column="cure_depart" property="cureDepart" />
+		<result column="cure_cost" property="cost" />
+		<result column="cure_way" property="cureWay" />
+		<result column="cure_recommend_drug" property="recommendDrug" />
+		<result column="disease_part" property="part" />
+		<result column="medical_insurance" property="insurance" />
+		<result column="cure_time" property="cureTime" />
+		<result column="disease_complication" property="complication" />
+		<result column="disease_population" property="population" />
+		<result column="disease_typical_symptoms"
+			property="typicalSymptoms" />
+		<result column="disease_prevention" property="prevention" />
+		<result column="disease_case" property="diseaseCase" />
+		<result column="disease_check" property="check" />
+		<result column="disease_url" property="url" />
+	</resultMap>
+
+	<select id="getDiseasePart" resultMap="DiseaseResultMap">
+		SELECT
+		id,disease_name,disease_introduce,disease_url from tb_disease where
+		disease_part like #{content} ORDER BY id LIMIT #{row},20
+	</select>
+
+	<select id="getDiseaseDepartment" resultMap="DiseaseResultMap">
+		SELECT
+		id,disease_name,disease_introduce,disease_url from tb_disease where
+		cure_depart like #{content} ORDER BY id LIMIT #{row},20
+	</select>
+	
+	<select id="getDiseaseByKeyWord" resultMap="DiseaseResultMap">
+		SELECT
+		id,disease_name,disease_introduce,disease_url from tb_disease where
+		disease_name like #{content} ORDER BY id LIMIT #{row},15
+	</select>
+
+	<select id="getDiseaseDetailById" resultMap="DiseaseResultMap">
+		SELECT * from tb_disease
+		where id=#{id}
+	</select>
+	<select id="getDiseaseDetailByName" resultMap="DiseaseResultMap">
+		SELECT * from tb_disease where disease_name =#{content} limit 1
+	</select>
+
+
+</mapper>

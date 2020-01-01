@@ -6,7 +6,7 @@ import java.util.Map;
 public class MessageList {
 
 	private int id;
-	private int roomId;
+	private String roomId;
 	private String userId;
 	private String status;
 	private int unread;
@@ -32,11 +32,11 @@ public class MessageList {
 		this.id = id;
 	}
 
-	public int getRoomId() {
+	public String getRoomId() {
 		return roomId;
 	}
 
-	public void setRoomId(int roomId) {
+	public void setRoomId(String roomId) {
 		this.roomId = roomId;
 	}
 

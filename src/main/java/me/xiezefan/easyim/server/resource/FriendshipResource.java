@@ -1,20 +1,6 @@
 package me.xiezefan.easyim.server.resource;
 
-import me.xiezefan.easyim.server.common.ServiceException;
-import me.xiezefan.easyim.server.resource.form.FriendshipAddForm;
-import me.xiezefan.easyim.server.resource.form.RequestForm;
-import me.xiezefan.easyim.server.resource.form.UserUpdateForm;
-import me.xiezefan.easyim.server.resource.vo.AddressListVo;
-import me.xiezefan.easyim.server.resource.vo.RequestFriendVo;
-import me.xiezefan.easyim.server.resource.vo.ResponseBuilder;
-import me.xiezefan.easyim.server.resource.vo.UserVo;
-import me.xiezefan.easyim.server.service.FriendshipService;
-import me.xiezefan.easyim.server.service.MessageService;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,7 +12,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
-import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import me.xiezefan.easyim.server.common.ServiceException;
+import me.xiezefan.easyim.server.resource.form.FriendshipAddForm;
+import me.xiezefan.easyim.server.resource.form.RequestForm;
+import me.xiezefan.easyim.server.resource.vo.AddressListVo;
+import me.xiezefan.easyim.server.resource.vo.RequestFriendVo;
+import me.xiezefan.easyim.server.resource.vo.ResponseBuilder;
+import me.xiezefan.easyim.server.resource.vo.UserVo;
+import me.xiezefan.easyim.server.service.FriendshipService;
 
 @Path("/friends")
 public class FriendshipResource {

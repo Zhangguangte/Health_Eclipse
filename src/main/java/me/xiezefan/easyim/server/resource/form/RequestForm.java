@@ -10,6 +10,7 @@ public class RequestForm {
 	public String quest_id;
 	public String content;
 	public Integer row;
+	public int type;
 	public Map<String, String> map;
 	public boolean validate() {
 		return !StringUtil.isEmpty(quest_id) && !StringUtil.isEmpty(content);

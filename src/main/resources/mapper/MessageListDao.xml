@@ -17,6 +17,7 @@
 
 	<select id="searchRoomId" resultMap="MessageListResultMap">
 		SELECT 
+			l1.id as id,
 			l1.room_id as room_id
 		from 
 			tb_message_list l1,tb_message_list l2 
@@ -27,5 +28,24 @@
 		and 
 			l1.room_id=l2.room_id
 	</select>
+	
+	
+	<select id="getDoctorRoom" resultMap="MessageListResultMap">
+		SELECT 
+			l1.id as id,
+			l1.room_id as room_id,
+			l1.another_name as anotherName
+		from 
+			tb_message_list l1,tb_message_list l2 
+		where 
+			l1.user_id = '000003'
+		and
+			l2.user_id = #{user_id}
+		and 
+			l1.room_id=l2.room_id
+		and 
+			l1.status = 'DOCTOR'
+	</select>
+	
 
 </mapper>

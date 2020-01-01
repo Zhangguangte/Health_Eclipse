@@ -1,8 +1,5 @@
 package me.xiezefan.easyim.server.model;
 
-/**
- * Created by xiezefan-pc on 2015/4/1 0001.
- */
 public class Friendship {
     private String id;
     private String userId;

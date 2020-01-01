@@ -14,6 +14,7 @@
 		<result column="contentStr" property="contentStr" />
 		<result column="create_time" property="createTime"/>
 		<result column="file_path" property="file_path"/>
+		<result column="sentStatus" property="sentStatus"/>
 		<association property="friend"
 			resultMap="me.xiezefan.easyim.server.dao.UserDao.UserResultMap"
 			columnPrefix="u_" />

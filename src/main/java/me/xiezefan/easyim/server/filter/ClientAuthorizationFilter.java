@@ -30,8 +30,8 @@ public class ClientAuthorizationFilter implements ContainerRequestFilter {
         noFilterPattern = new ArrayList<Pattern>();
         noFilterPattern.add(Pattern.compile("^(users/login)"));
         noFilterPattern.add(Pattern.compile("^(users/register)"));
-        noFilterPattern.add(Pattern.compile("^(messages/upPicture)"));
-        noFilterPattern.add(Pattern.compile("^(messages/upload2IM)"));
+//        noFilterPattern.add(Pattern.compile("^(messages/upPicture)"));
+//        noFilterPattern.add(Pattern.compile("^(messages/upload2IM)"));
     }
 
     @Autowired

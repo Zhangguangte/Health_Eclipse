@@ -4,7 +4,7 @@ import me.xiezefan.easyim.server.resource.vo.ResponseBuilder;
 
 /**
  * Service 层统一异常类
- * Created by xiezefan-pc on 2015/3/31 0031.
+ * Created by  2019/12/09 .
  */
 public class ServiceException extends Exception {
     private boolean logException;

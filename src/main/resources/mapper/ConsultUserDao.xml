@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.xiezefan.easyim.server.dao.ConsultDao">
+	<resultMap type="me.xiezefan.easyim.server.model.ConsultUser"
+		id="ConsultUserResultMap">
+		<id column="id" property="id" />
+		<result column="consult_id" property="consultId" />
+		<result column="name" property="name" />
+		<result column="card_id" property="cardId" />
+		<result column="sex" property="sex" />
+		<result column="birthday" property="birthday" />
+		<result column="weight" property="weight" />
+		<result column="allergy" property="allergy" />
+		<result column="history" property="history" />
+		<result column="liver" property="liver" />
+		<result column="kidney" property="kidney" />
+	
+	</resultMap>
+
+	
+
+</mapper>

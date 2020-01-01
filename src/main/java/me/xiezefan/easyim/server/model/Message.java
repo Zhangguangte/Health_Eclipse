@@ -20,9 +20,18 @@ public class Message {
     private String content;
     private Map<String, Object> contentmap ;
     private String createTime;
+    private String sentStatus;
     private User friend;
     private MessageList list;
 
+
+	public String getSentStatus() {
+		return sentStatus;
+	}
+
+	public void setSentStatus(String sentStatus) {
+		this.sentStatus = sentStatus;
+	}
 
 	public String getRoom_id() {
 		return room_id;

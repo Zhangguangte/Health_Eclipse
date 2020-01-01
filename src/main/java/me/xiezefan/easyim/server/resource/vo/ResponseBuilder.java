@@ -19,6 +19,7 @@ public class ResponseBuilder {
     public static final int STATUS_INTERNAL_SERVER = 500;
 
     // error response
+    public static final ResponseBuilder ERROR_DATA_LOSE = new ResponseBuilder(STATUS_BAD_REQUEST, 999, "Lose Data");
     public static final ResponseBuilder ERROR_BAD_SERVER = new ResponseBuilder(STATUS_INTERNAL_SERVER, 1000, "Bad Server");
     public static final ResponseBuilder ERROR_AUTHORIZATION_FAIL = new ResponseBuilder(STATUS_UNAUTHORIZED, 1001, "Authorization Fail");
     public static final ResponseBuilder ERROR_FORBIDDEN_FAIL = new ResponseBuilder(STATUS_FORBIDDEN, 1002, "Forbidden");
@@ -26,6 +27,11 @@ public class ResponseBuilder {
     public static final ResponseBuilder ERROR_USER_EXIST = new ResponseBuilder(STATUS_BAD_REQUEST, 1004, "User Exist");
     public static final ResponseBuilder ERROR_USER_NOT_FOUND = new ResponseBuilder(STATUS_BAD_REQUEST, 1005, "No Such User");
     public static final ResponseBuilder ERROR_MESSAGE_NOT_FOUND = new ResponseBuilder(STATUS_BAD_REQUEST, 1006, "No Such Message");
+    public static final ResponseBuilder ERROR_MEDICINE_NOT_FOUND = new ResponseBuilder(STATUS_BAD_REQUEST, 1007, "No Such Medicine");
+    public static final ResponseBuilder ERROR_DISEASE_NOT_FOUND = new ResponseBuilder(STATUS_BAD_REQUEST, 1008, "No Such Disease");
+    public static final ResponseBuilder ERROR_MEDICINE_CLASSIFY_NOT_FOUND = new ResponseBuilder(STATUS_BAD_REQUEST, 1009, "No Such Medicine Classify");
+    public static final ResponseBuilder ERROR_ROOM_NOT_FOUND = new ResponseBuilder(STATUS_BAD_REQUEST, 1010, "No Such ROOM");
+    public static final ResponseBuilder ERROR_MAX_ROOM = new ResponseBuilder(STATUS_BAD_REQUEST, 1011, "MAX ROOM");
 
 
 

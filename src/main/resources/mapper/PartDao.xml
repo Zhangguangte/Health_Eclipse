@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.xiezefan.easyim.server.dao.DiseaseDao">
+	<resultMap type="me.xiezefan.easyim.server.model.Part"
+		id="PartResultMap">
+		<id column="id" property="id" />
+		<result column="part_name" property="partName" />
+		<result column="related_organs" property="relatedOrgans" />
+	</resultMap>
+
+	<select id="getDiseasePartList" resultMap="PartResultMap">
+		select * from tb_part
+	</select>
+
+</mapper>

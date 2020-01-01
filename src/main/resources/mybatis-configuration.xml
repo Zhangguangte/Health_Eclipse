@@ -9,5 +9,20 @@
         <mapper resource="mapper/OfflineMessageDao.xml"/>
         <mapper resource="mapper/MessageListDao.xml"/>
          <mapper resource="mapper/RequestDao.xml"/>
+         <mapper resource="mapper/NewsDao.xml"/>
+         <mapper resource="mapper/NewsUserDao.xml"/>
+         <mapper resource="mapper/MedicineDao.xml"/>
+         <mapper resource="mapper/RecipesDao.xml"/>
+         <mapper resource="mapper/IngredientsDao.xml"/>
+         <mapper resource="mapper/PartDao.xml"/>
+         <mapper resource="mapper/DepartmentDao.xml"/>
+         <mapper resource="mapper/DiseaseDao.xml"/>
+         <mapper resource="mapper/MedicineClassifyDao.xml"/>
+         <mapper resource="mapper/ConsultDao.xml"/>
+         <mapper resource="mapper/ConsultUserDao.xml"/>
+         <mapper resource="mapper/LibraryDao.xml"/>
+         <mapper resource="mapper/LectureDao.xml"/>
+         <mapper resource="mapper/FeedbackDao.xml"/>
+         <mapper resource="mapper/TimetableDao.xml"/>
     </mappers>
 </configuration>

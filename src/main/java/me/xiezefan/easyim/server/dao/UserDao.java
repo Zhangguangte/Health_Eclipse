@@ -1,14 +1,14 @@
 package me.xiezefan.easyim.server.dao;
 
-import me.xiezefan.easyim.server.model.User;
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import javax.annotation.Resource;
-import java.util.List;
+import me.xiezefan.easyim.server.model.User;
 
 public interface UserDao {
     @Insert("insert into tb_user(id, account, password, nickname, avatar, device_id, create_time) values(#{id}, #{account}, #{password}, #{nickname}, #{avatar}, #{deviceId}, #{createTime})")

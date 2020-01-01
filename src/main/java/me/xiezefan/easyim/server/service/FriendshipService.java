@@ -26,7 +26,6 @@ import java.util.UUID;
 
 /**
  * Friendship Service
- * Created by xiezefan-pc on 2015/4/1 0001.
  */
 @Service
 public class FriendshipService {

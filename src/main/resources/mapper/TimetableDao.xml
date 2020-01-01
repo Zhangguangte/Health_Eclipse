@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.xiezefan.easyim.server.dao.ServiceDao">
+	<resultMap type="me.xiezefan.easyim.server.model.Timetable"
+		id="TimetableResultMap">
+		<id column="id" property="id" />
+		<result column="describe" property="describe" />
+		<result column="semester" property="semester" />
+		<result column="week" property="week" javaType="Integer" />
+		<result column="start" property="start" javaType="Integer" />
+		<result column="period" property="period" javaType="Integer" />
+		<result column="year" property="year" />
+		<result column="major" property="major" />
+	</resultMap>
+
+
+</mapper>

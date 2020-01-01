@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.xiezefan.easyim.server.dao.MessageDao">
+	<resultMap type="me.xiezefan.easyim.server.model.News"
+		id="NewsResultMap">
+		<id column="id" property="id" />
+		<result column="create_time" property="createTime" />
+		<result column="content" property="content" />
+		<result column="user_type" property="userType" />
+		<association property="newsUser" 
+		resultMap="me.xiezefan.easyim.server.dao.MessageDao.NewsUserResultMap"
+		columnPrefix="nu_"/>
+	</resultMap>
+
+	<select id="getAllNotice" resultMap="NewsResultMap">
+		SELECT 
+			n.id as id,
+			n.create_time as create_time,
+			n.content as content,
+			nu.status as nu_status,
+			n.user_type as user_type
+	 	from 
+	 		tb_news_user nu,tb_news n 
+		where 
+			user_id=#{userId}
+		and
+			n.id = nu.news_id
+		UNION ALL
+		SELECT 
+			n1.id as id,
+			n1.create_time  as create_time,
+			n1.content as content,
+			"UNREAD" as nu_status,
+			"ALL" as user_type
+		from
+			tb_news n1  
+		where 
+			user_type = 'ALL' 
+		and 
+			create_time > #{time}
+		and 
+			DATE_SUB(CURDATE(), INTERVAL 7 DAY) <![CDATA[ <= ]]> date(n1.create_time)
+	</select>
+
+
+</mapper>
